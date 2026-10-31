@@ -47,3 +47,43 @@ jobs:
           uploadArtifacts: true
           artifactName: lighthouse-report
           temporaryPublicStorage: false
+
+  security:
+    name: Segurança passiva (@seguranca, chrome)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Executar @seguranca
+        uses: cypress-io/github-action@v7
+        with:
+          browser: chrome
+          expose: tags=@seguranca
+      - name: Publicar allure-results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: allure-results-security
+          path: allure-results
+          if-no-files-found: ignore
+
+  zap-baseline:
+    name: OWASP ZAP Baseline (passivo)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      # Baseline = spider de 1 minuto + regras passivas. Nenhuma regra ativa (sem ataques).
+      - name: ZAP Baseline
+        uses: zaproxy/action-baseline@v0.15.0
+        with:
+          target: https://www.saucedemo.com/
+          rules_file_name: zap/rules.tsv
+          cmd_options: -m 1
+          fail_action: false
+          allow_issue_writing: false
+          artifact_name: zap-report

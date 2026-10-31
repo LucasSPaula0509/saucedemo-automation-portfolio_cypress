@@ -2,7 +2,7 @@ import { AfterStep, Before } from "@badeball/cypress-cucumber-preprocessor";
 import * as allure from "allure-cypress";
 import { resetWorld, type World } from "../world";
 import { attachFailureContext, screenshot } from "./Evidence";
-import { logToNode } from "./Logger";
+import { logToNode } from "../utils/Logger";
 
 const LOGGER = "Hooks";
 
