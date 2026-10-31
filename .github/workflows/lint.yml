@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    name: actionlint (workflows)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validar workflows
+        run: |
+          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash) 1.7.12
+          ./actionlint -color
+
+  lint:
+    name: Tipos, ESLint e Prettier
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Instalar dependências (sem o binário do Cypress)
+        run: npm ci
+        env:
+          CYPRESS_INSTALL_BINARY: "0"
+      - name: npm run lint
+        run: npm run lint

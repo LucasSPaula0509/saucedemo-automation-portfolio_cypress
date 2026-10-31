@@ -8,10 +8,11 @@
     "node": ">=26"
   },
   "scripts": {
-    "test": "cypress run",
-    "test:smoke": "cypress run --expose tags=@smoke",
-    "test:defeitos": "cypress run --expose tags=@defeito",
-    "test:nao-funcionais": "cypress run --expose \"tags=@performance or @seguranca\"",
+    "clean": "node -e \"for (const dir of ['allure-results', 'allure-report', 'reports', 'cypress/screenshots']) require('fs').rmSync(dir, { recursive: true, force: true })\"",
+    "test": "npm run clean && cypress run --browser chrome",
+    "test:smoke": "npm run clean && cypress run --browser chrome --expose tags=@smoke",
+    "test:defeitos": "npm run clean && cypress run --browser chrome --expose tags=@defeito",
+    "test:nao-funcionais": "npm run clean && cypress run --browser chrome --expose \"tags=@performance or @seguranca\"",
     "cy:open": "cypress open --e2e",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit && eslint . --max-warnings 0 && prettier --check .",
