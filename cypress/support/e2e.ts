@@ -1,2 +1,2 @@
 // Ponto de entrada do suporte do Cypress, carregado antes de cada feature.
-export {};
+import "allure-cypress";

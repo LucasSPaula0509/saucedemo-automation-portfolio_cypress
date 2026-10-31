@@ -1,4 +1,5 @@
 import { type DataTable, Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import * as allure from "allure-cypress";
 import { PageTitles } from "../data/PageTitles";
 import { Paths } from "../data/Paths";
 import { Products } from "../data/Products";
@@ -9,7 +10,7 @@ import { checkoutInfoPage } from "../pages/CheckoutInfoPage";
 import { checkoutOverviewPage } from "../pages/CheckoutOverviewPage";
 import { header } from "../pages/HeaderComponent";
 import { formatCents, parseCents } from "../utils/Money";
-import { orderTotalsFromItemPrices } from "../utils/OrderTotals";
+import { describeOrderTotals, orderTotalsFromItemPrices } from "../utils/OrderTotals";
 import type { World } from "../world";
 import { expectAll, expectLoaded, expectText } from "./Assertions";
 import {
@@ -113,6 +114,7 @@ Then(
   function (subtotal: string, tax: string, total: string) {
     checkoutOverviewPage.itemPrices().then((prices) => {
       const rule = orderTotalsFromItemPrices(prices);
+      allure.attachment("Cálculo do pedido", describeOrderTotals(rule), "text/plain");
       expectAll(displayedTotals(), "Resumo do pedido (exibido x esperado e regra de 8%)", {
         "Subtotal exibido": subtotal,
         "Imposto exibido": tax,
