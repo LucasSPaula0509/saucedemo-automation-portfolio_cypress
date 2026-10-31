@@ -2,7 +2,10 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-/** Grava o environment.properties do Allure (mesmos campos do projeto Java, sem Grid). */
+/**
+ * Grava o environment.properties do Allure (mesmos campos do projeto Java, com "Node" no lugar de
+ * "Java").
+ */
 export function writeAllureEnvironment(
   resultsDir: string,
   config: Cypress.PluginConfigOptions,
