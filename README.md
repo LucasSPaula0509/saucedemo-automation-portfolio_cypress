@@ -323,7 +323,7 @@ O tempo do login é medido pelo próprio teste e inclui a latência do Cypress, 
 
 Para rodar o Lighthouse localmente: `npx @lhci/cli autorun`.
 
-**Achado conhecido (o mesmo do projeto Java):** a nota de boas práticas fica em **0.81**, abaixo do mínimo de 0.9, porque o site usa _unload event listeners_, descontinuados no Chrome. Por isso o job **Lighthouse CI** fica vermelho. Isso é um achado do site, e o limite não foi reduzido.
+**Achado conhecido (o mesmo do projeto Java):** a nota de boas práticas fica abaixo do mínimo de 0.9 (**0.78** na execução de 31/10/2026 deste repositório; 0.81 no projeto Java), porque o site usa _unload event listeners_, descontinuados no Chrome. Por isso o job **Lighthouse CI** fica vermelho. Isso é um achado do site, e o limite não foi reduzido.
 
 ### Segurança
 
