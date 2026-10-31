@@ -2,6 +2,7 @@ import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-prepro
 import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { defineConfig } from "cypress";
+import { log } from "./cypress/tasks/log";
 
 /**
  * Desativa o gerenciador de senhas e o alerta de "senha vazada" do Chrome/Edge, que abre um
@@ -46,6 +47,7 @@ export default defineConfig({
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
       on("file:preprocessor", createBundler({ plugins: [createEsbuildPlugin(config)] }));
+      on("task", { log });
       on("before:browser:launch", (browser, launchOptions) => {
         const { viewportWidth: width, viewportHeight: height } = config;
         if (browser.family === "chromium" && browser.name !== "electron") {

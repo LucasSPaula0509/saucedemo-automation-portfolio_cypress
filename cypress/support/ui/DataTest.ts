@@ -21,5 +21,5 @@ export function withExactText(selector: string, text: string): TextLocator {
     .trim()
     .split(/\s+/)
     .map((word) => Cypress._.escapeRegExp(word));
-  return { selector, text: new RegExp(`^\s*${words.join("\s+")}\s*$`) };
+  return { selector, text: new RegExp(String.raw`^\s*${words.join(String.raw`\s+`)}\s*$`) };
 }
