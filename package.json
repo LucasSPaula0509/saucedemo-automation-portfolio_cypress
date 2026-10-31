@@ -1,0 +1,41 @@
+{
+  "name": "saucedemo-automation-portifolio-cypress",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automação front-end do Swag Labs com Cypress + Cucumber",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "test:smoke": "cypress run --expose tags=@smoke",
+    "test:defeitos": "cypress run --expose tags=@defeito",
+    "test:nao-funcionais": "cypress run --expose \"tags=@performance or @seguranca\"",
+    "cy:open": "cypress open --e2e",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit && eslint . --max-warnings 0 && prettier --check .",
+    "format": "prettier --write .",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:serve": "allure serve allure-results"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "28.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.8",
+    "@types/node": "26.6.6",
+    "allure-commandline": "2.46.1",
+    "allure-cypress": "3.14.0",
+    "cypress": "16.2.1",
+    "esbuild": "0.28.2",
+    "eslint": "10.14.0",
+    "eslint-plugin-cypress": "7.0.2",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1"
+  },
+  "allowScripts": {
+    "cypress@16.2.1": true,
+    "esbuild@0.28.2": true
+  }
+}

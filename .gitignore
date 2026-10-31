@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+
+# Configuração local (copie de cypress.env.example.json)
+cypress.env.json
+
+# Resultados e relatórios gerados
+allure-results/
+allure-report/
+reports/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+.lighthouseci/
+zap-report/
+
+# IDEs
+.idea/
+.vscode/
+
+# SO
+.DS_Store
+Thumbs.db

@@ -1,0 +1,10 @@
+node_modules/
+package-lock.json
+allure-results/
+allure-report/
+reports/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+.lighthouseci/
+zap-report/
