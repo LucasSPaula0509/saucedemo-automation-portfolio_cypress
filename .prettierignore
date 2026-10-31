@@ -8,3 +8,8 @@ cypress/videos/
 cypress/downloads/
 .lighthouseci/
 zap-report/
+
+# Copiados sem alteração do projeto Java
+lighthouserc.json
+allure/categories.json
+zap/

@@ -1,0 +1,49 @@
+name: Performance e Segurança
+
+# Somente agendado ou manual: nada aqui roda em push/PR. Sem teste de carga e sem scan ativo
+# (o saucedemo é um site de terceiros; apenas medições de baixo volume e verificações passivas).
+on:
+  schedule:
+    - cron: "0 13 * * 1" # segunda-feira, 10:00 BRT
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  performance:
+    name: Performance (@performance, chrome)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Executar @performance
+        uses: cypress-io/github-action@v7
+        with:
+          browser: chrome
+          expose: tags=@performance
+      - name: Publicar allure-results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: allure-results-performance
+          path: allure-results
+          if-no-files-found: ignore
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Lighthouse (3 execuções na página de login)
+        uses: treosh/lighthouse-ci-action@12.6.2
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          artifactName: lighthouse-report
+          temporaryPublicStorage: false
