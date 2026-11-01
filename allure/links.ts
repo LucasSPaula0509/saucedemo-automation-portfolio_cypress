@@ -3,7 +3,7 @@
  * Os IDs de KnownDefects.ts usam o padrão de issue.
  */
 const ISSUE_URL_TEMPLATE =
-  "https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/issues?q=%s";
+  "https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/issues?q=%s";
 const TMS_URL_TEMPLATE = "https://tms.example.com/browse/%s";
 
 export const ALLURE_LINKS = {

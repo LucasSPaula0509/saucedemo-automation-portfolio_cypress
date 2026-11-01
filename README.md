@@ -13,7 +13,7 @@
 
 Framework de testes automatizados para o front-end da loja de demonstração **Swag Labs**, em <https://www.saucedemo.com>.
 
-Esta é a **versão Cypress** do projeto [saucedemo-automation-portifolio](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio) (Java + Selenium). Os dois projetos coexistem: mesmos cenários, mesmas regras, mesmos relatórios e o mesmo CI/CD. Muda só a tecnologia.
+Esta é a **versão Cypress** do projeto [saucedemo-automation-portfolio_java](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java) (Java + Selenium). Os dois projetos coexistem: mesmos cenários, mesmas regras, mesmos relatórios e o mesmo CI/CD. Muda só a tecnologia.
 
 Os cenários são escritos em português, no formato BDD (Gherkin), e ficam nos arquivos `.feature`, que são **idênticos** aos do projeto Java. Cada passo é executado em um navegador real pelo Cypress. O resultado é publicado em um relatório Allure.
 
