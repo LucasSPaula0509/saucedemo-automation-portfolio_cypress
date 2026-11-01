@@ -1,11 +1,11 @@
 # Swag Labs — Automação de testes front-end com Cypress
 
-[![Testes E2E](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/tests.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/tests.yml)
-[![Lint](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/lint.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/lint.yml)
-[![Performance e Segurança](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/security-performance.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress/actions/workflows/security-performance.yml)
-[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://lucasspaula0509.github.io/saucedemo-automation-portifolio_cypress/)
+[![Testes E2E](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/tests.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/tests.yml)
+[![Lint](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/lint.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/lint.yml)
+[![Performance e Segurança](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/security-performance.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress/actions/workflows/security-performance.yml)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://lucasspaula0509.github.io/saucedemo-automation-portfolio_cypress/)
 
-**Allure Report da última execução da `main`:** <https://lucasspaula0509.github.io/saucedemo-automation-portifolio_cypress/>
+**Allure Report da última execução da `main`:** <https://lucasspaula0509.github.io/saucedemo-automation-portfolio_cypress/>
 
 ---
 
@@ -54,8 +54,8 @@ Os cenários usam esta stack:
 | **Git**                            | clonar o repositório                   | <https://git-scm.com/>                                                                                |
 
 ```bash
-git clone https://github.com/LucasSPaula0509/saucedemo-automation-portifolio_cypress.git
-cd saucedemo-automation-portifolio_cypress
+git clone https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_cypress.git
+cd saucedemo-automation-portfolio_cypress
 node -v           # deve mostrar v26.x
 npm ci            # instala as dependências e o binário do Cypress
 npx cypress verify
@@ -268,12 +268,12 @@ smoke (chrome) ──► regressão (chrome) ──► regressão (firefox) ─�
 
 Tudo roda **em sequência**: um job por vez (encadeados com `needs`), um navegador por vez na matriz (`max-parallel: 1`) e um cenário por vez. Não há Cypress Cloud, `--parallel`, `--record` nem divisão de specs.
 
-| Job               | O que faz                                                                                                                                                                                                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **smoke**         | `@smoke and not @defeito` no Chrome headless. Se falhar, a regressão nem começa.                                                                                                                                                                                                     |
-| **regression**    | `not @defeito and not @performance` em matriz **Chrome** e depois **Firefox**                                                                                                                                                                                                        |
-| **known-defects** | só `@defeito`, com `continue-on-error`. Roda mesmo se a regressão falhar. Deve ficar vermelho enquanto os defeitos existirem; quando ficar verde, o defeito foi corrigido.                                                                                                           |
-| **report**        | roda sempre (`if: always()`): junta os `allure-results` de todos os jobs, recupera o histórico (tendência) do relatório anterior, gera o Allure e publica em <https://lucasspaula0509.github.io/saucedemo-automation-portifolio_cypress/>. Em PR, o relatório fica só como artifact. |
+| Job               | O que faz                                                                                                                                                                                                                                                                           |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **smoke**         | `@smoke and not @defeito` no Chrome headless. Se falhar, a regressão nem começa.                                                                                                                                                                                                    |
+| **regression**    | `not @defeito and not @performance` em matriz **Chrome** e depois **Firefox**                                                                                                                                                                                                       |
+| **known-defects** | só `@defeito`, com `continue-on-error`. Roda mesmo se a regressão falhar. Deve ficar vermelho enquanto os defeitos existirem; quando ficar verde, o defeito foi corrigido.                                                                                                          |
+| **report**        | roda sempre (`if: always()`): junta os `allure-results` de todos os jobs, recupera o histórico (tendência) do relatório anterior, gera o Allure e publica em <https://lucasspaula0509.github.io/saucedemo-automation-portfolio_cypress/>. Em PR, o relatório fica só como artifact. |
 
 - **Execução manual:** em _Actions → Testes E2E → Run workflow_, escolha o `browser` e as `tags`.
 - **Artifacts** (sempre enviados, mesmo com falha): `allure-results-*`, `evidencias-*` (relatórios do Cucumber em `reports/` e `cypress/screenshots`) e `allure-report`.

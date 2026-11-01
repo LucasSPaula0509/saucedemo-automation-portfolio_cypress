@@ -140,7 +140,7 @@ jobs:
       contents: write
     env:
       PUBLISH: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
-      REPORT_URL: https://lucasspaula0509.github.io/saucedemo-automation-portifolio_cypress/
+      REPORT_URL: https://lucasspaula0509.github.io/saucedemo-automation-portfolio_cypress/
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
